@@ -2,7 +2,7 @@
 using Il2CppAssets.Scripts.Inventory__Items__Pickups.GoldAndMoney;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(FreeShadyGuy.MelonLoaderMod.Core), "FreeShadyGuy", "1.0.0", "Slimaeus", null)]
+[assembly: MelonInfo(typeof(FreeShadyGuy.MelonLoaderMod.Core), "FreeShadyGuy", "1.0.1", "Slimaeus", null)]
 [assembly: MelonGame("Ved", "Megabonk")]
 
 namespace FreeShadyGuy.MelonLoaderMod
