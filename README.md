@@ -5,6 +5,7 @@
 <Project>
     <PropertyGroup>
         <MEGABONK_DIR Condition="'$(MEGABONK_DIR)' == ''">X:\Your\Path\TO\Megabonk</MEGABONK_DIR>
+        <MEGABONK_PROFILE Condition="'$(MEGABONK_PROFILE)' == ''">X:\Your\Path\TO\Megabonk\Profile(R2ModmanBepInEx)</MEGABONK_PROFILE>
     </PropertyGroup>
 </Project>
 ```
