@@ -1,24 +1,27 @@
-﻿using HarmonyLib;
-using Il2CppAssets.Scripts.Inventory__Items__Pickups.GoldAndMoney;
-using MelonLoader;
+﻿using BepInEx;
+using BepInEx.Unity.IL2CPP;
+using HarmonyLib;
+using Assets.Scripts.Inventory__Items__Pickups.GoldAndMoney;
 
-[assembly: MelonInfo(typeof(FreeShadyGuy.MelonLoaderMod.Core), "FreeShadyGuy", "1.0.1", "Slimaeus", null)]
-[assembly: MelonGame("Ved", "Megabonk")]
+namespace FreeShadyGuy.BepInExMod;
 
-namespace FreeShadyGuy.MelonLoaderMod
+[BepInPlugin("Slimaeus.FreeShadyGuy", "FreeShadyGuy", "1.0.1")]
+public class Core : BasePlugin
 {
-    public class Core : MelonMod
+    public override void Load()
     {
-        [HarmonyPatch(typeof(MoneyUtility))]
-        internal static class MoneyUtilityPatches
+        Harmony.CreateAndPatchAll(typeof(MoneyUtilityPatches));
+    }
+
+    [HarmonyPatch(typeof(MoneyUtility))]
+    internal static class MoneyUtilityPatches
+    {
+        [HarmonyPatch("GetItemPriceShadyGuy")]
+        [HarmonyPrefix]
+        private static bool GetItemPriceShadyGuy_Prefix(ref int __result)
         {
-            [HarmonyPatch("GetItemPriceShadyGuy")]
-            [HarmonyPrefix]
-            private static bool GetItemPriceShadyGuy_Prefix(ref int __result)
-            {
-                __result = 0;
-                return false;
-            }
+            __result = 0;
+            return false;
         }
     }
 }
